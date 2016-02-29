@@ -34,6 +34,8 @@ group :test do
   gem 'capybara', '2.4.4'
   gem 'faker'
   gem 'shoulda-matchers', require: false
+  gem 'capybara-email'
+  gem 'email_spec'
 end
 
 group :production do
