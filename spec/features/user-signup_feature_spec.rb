@@ -1,15 +1,24 @@
 require 'rails_helper';
 
 describe 'User registration' do
+  let(:first_name) { 'Jane' }
+  let(:last_name) { 'Doe' }
   let(:user_email) { 'registration_test_user@example.org' }
   let(:user_password) { 'registration_test_password' }
 
   before :each do
     visit new_user_registration_path
 
+    fill_in 'user_first_name', with: first_name
+    fill_in 'user_last_name', with: last_name
     fill_in 'user_email', with: user_email
     fill_in 'user_password', with: user_password
     fill_in 'user_password_confirmation', with: user_password
+
+    fill_in 'payment_card_number', with: '4242 4242 4242 4242'
+    fill_in 'payment_card_cvv', with: '123'
+    select '3 - March', from: 'payment_card_expires_month'
+    select '2018', from: 'payment_card_expires_year'
 
     click_button 'Sign up'
   end

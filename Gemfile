@@ -13,6 +13,8 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'whenever', '0.8.4', :require => false
+gem 'stripe'
+gem "figaro"
 
 group :development, :test do
   gem 'byebug'  

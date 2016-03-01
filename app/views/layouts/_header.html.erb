@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav>
-      <%= link_to "JOB TRACKER", root_path, class: "navbar-brand"%>
+      <%= link_to "JOB APPLICATION TRACKER", root_path, class: "navbar-brand"%>
       <ul class="nav navbar-nav navbar-right">
         <% unless user_signed_in? %>
           <li><%= link_to "LOGIN", new_user_session_path %></li>
