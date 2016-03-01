@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <%= link_to "JOB TRACKER", root_path, class: "navbar-brand"%>
+      <ul class="nav navbar-nav navbar-right">
+        <% unless user_signed_in? %>
+          <li><%= link_to "LOGIN", new_user_session_path %></li>
+          <li><%= link_to "SIGN UP. It's Free!", new_user_registration_path %></li>
+        <% else %>
+          <li><%= link_to truncate(current_user.first_name + " " + current_user.last_name, length: 25).html_safe, edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
