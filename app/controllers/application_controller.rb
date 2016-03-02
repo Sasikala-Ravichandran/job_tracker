@@ -9,4 +9,17 @@ class ApplicationController < ActionController::Base
     session.delete(:return_to) || current_user
   end
   
+  def validate_user_file
+    unless current_user == @document.user
+      flash[:error] = "You do not have access to that page"
+      redirect_to current_user
+    end
+  end
+
+  def user_authorize
+    unless current_user.id == params[:user_id].to_i
+      flash[:error] = "You do not have access to that page"
+      redirect_to current_user
+    end
+  end
 end

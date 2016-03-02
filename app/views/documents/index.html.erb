@@ -1,0 +1,35 @@
+<h1 class="center">All Documents</h1>
+<div class="center"><%= link_to 'Home', current_user, class:"btn btn-default" %></div>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="my_pagination"><%= will_paginate @documents %></div>
+      <div class="panel panel-default">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name of Document</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @documents.each_with_index do |file, i| %>
+              <tr>
+                <td><%= (@page - 1) * 10 + i+1 %></td>
+                <td><%= file.name %><br></td>
+                <td>
+                  <%= link_to "Download", file.resume.url, class: "btn btn-default" %>
+                  <%= link_to "Edit", edit_user_document_path(current_user, file ), class: "btn btn-default" %>
+                  <%= link_to "Show", user_document_path(current_user, file), class: "btn btn-default" %>
+                  <%= link_to "Delete", user_document_path(current_user, file), method: :delete, class: "btn btn-default" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <div class="my_pagination"><%= will_paginate @documents %></div>
+  </div>
+</div>
