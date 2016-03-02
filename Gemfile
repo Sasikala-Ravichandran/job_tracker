@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'whenever', '0.8.4', :require => false
 gem 'stripe'
 gem "figaro"
+gem 'carrierwave-dropbox'
 
 group :development, :test do
   gem 'byebug'  

@@ -58,6 +58,14 @@ GEM
     capybara-email (2.5.0)
       capybara (~> 2.4)
       mail
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-dropbox (1.2.1)
+      carrierwave (~> 0.9)
+      dropbox-sdk (~> 1.6)
     chronic (0.10.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -79,6 +87,8 @@ GEM
     diff-lcs (1.2.5)
     domain_name (0.5.20160128)
       unf (>= 0.0.5, < 1.0.0)
+    dropbox-sdk (1.6.5)
+      json
     email_spec (2.0.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -282,6 +292,7 @@ DEPENDENCIES
   byebug
   capybara (= 2.4.4)
   capybara-email
+  carrierwave-dropbox
   coffee-rails (~> 4.1.0)
   devise
   email_spec
