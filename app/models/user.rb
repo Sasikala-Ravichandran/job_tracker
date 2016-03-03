@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :payment
 
   has_many :documents
+  has_many :positions
+  
 end

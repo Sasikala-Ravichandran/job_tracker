@@ -11,4 +11,6 @@ RSpec.describe User, type: :model do
   it { should accept_nested_attributes_for(:payment)}
 
   it { should have_many(:documents) }
+
+  it { should have_many(:positions) }
 end
