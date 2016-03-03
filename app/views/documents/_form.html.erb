@@ -2,6 +2,7 @@
   <% if @document.errors.any? %>
     <%= render 'shared/errors', obj: @document %>  
   <% end %>
+  
   <div class="form-group">
     <%= f.label :name, class: "control-label" %><br>
     <%= f.text_field :name, class: "form-control" %>
