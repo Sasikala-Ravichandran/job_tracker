@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :documents
+    resources :positions
   end
   
   root 'welcome#index'
