@@ -8,4 +8,6 @@ RSpec.describe Position, type: :model do
   it { should validate_presence_of(:close_date) } 
   it { should validate_presence_of(:applied_date) } 
   it { should belong_to(:user) }
+  it { should have_many(:applieds) }
+  it { should have_many(:documents).through(:applieds) }
 end
