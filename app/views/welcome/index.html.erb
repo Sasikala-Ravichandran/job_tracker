@@ -1,5 +1,9 @@
 <% if current_user %>
-  <h3>Welcome: <%= current_user.email %></h3>
+  <div class="center">
+    <h3>Hi! <%= truncate(current_user.first_name + " " + current_user.last_name, length: 25).html_safe %></h3>
+    <p> Welcome to Job Application Tracker App and we are sure you love managing your job applications.</p>
+    <%= link_to "Explore Inside", current_user, class: "btn btn-info" %>
+  </div>
 <% else %>
   <div class="jumbotron">
     <h2>Welcome to the Job Application Tracker App!</h2>

@@ -1,0 +1,64 @@
+<section>
+ <div class="row">
+  <article>
+   <div class="col-lg-4 col-lg-offset-1">
+   <div class="heading center"><h3>Documents</h3></div>
+   <ul class="list-group center">
+     <li class="list-group-item link-color list-color"><%= link_to "New Document", new_user_document_path(current_user)%></li>
+     <li class="list-group-item link-color list-color"><%= link_to "See all your uploaded docs", user_documents_path(current_user) %></li>
+      
+    </ul>
+  </div>
+  </article>
+  <article>
+ <div class="col-lg-4 col-lg-offset-1">
+ <div class="heading center"><h3>Job Applications</h3></div>
+  <ul class="list-group center">
+    <li class="list-group-item link-color list-color"><%= link_to "New Application", new_user_position_path(current_user) %></li>
+    <li class="list-group-item link-color list-color"><%= link_to "Jobs you applied so far", user_positions_path(current_user) %></li>
+  </ul>
+ </div>
+ </article>
+</div>
+</section>
+
+
+<section>
+<div class="my_pagination"><%= will_paginate @positions %></div>
+<div class="panel panel-default">
+  
+  <div class="panel-heading center"><h3>Jobs Application</h3></div>
+
+
+ <table class="table table-striped">
+   <thead>
+     <tr class="center">
+       <th>S.No</th>
+       <th>Employer</th>
+       <th>Opened on</th>
+       <th>Applied on</th>
+       <th>interviewed on</th>
+       <th>Closing on</th>
+       <th>Documents count</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @positions.each_with_index do |pos, i| %>
+     <tr>
+        
+       <td><%= (@page - 1) * 10 + i+1 %></td>
+       <td class="text-justify"><%= link_to pos.employer, [current_user, pos] %></td>
+       <td class="text-justify"><%= pos.open_date.strftime("%e %b %Y") %></td>
+       <td class="text-justify"><%= pos.applied_date.strftime("%e %b %Y") %></td>
+       <td class="text-justify"><%= pos.interview_date ? pos.interview_date.strftime("%e %b %Y") : "Not yet interviewed" %></td>
+       <td class="text-justify"><%= pos.close_date.strftime("%e %b %Y") %></td>
+       <td class="text-justify"><%= pos.documents.count %></td>
+     </tr>
+     <% end %>
+   </tbody>
+ </table>
+ 
+</div>
+<div class="my_pagination"><%= will_paginate @positions %></div>
+</section>
+</div>

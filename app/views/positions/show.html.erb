@@ -1,1 +1,51 @@
-<h1> Show </h1>
+<div class="row">
+  <div class="col-lg-9 col-lg-offset-2">
+   <h1 class="center">JOB POSITION DETAILS</h1>
+   <div class="center">
+     <%= link_to "Edit", edit_user_position_path(current_user, @position), class: "btn btn-default"%>
+     <%= link_to "Delete", user_position_path(current_user, @position), method: :delete, class: "btn btn-default" %>
+     <%= link_to "Back", user_positions_path(current_user), class: "btn btn-default" %>
+     <%= link_to "Home", current_user, class: "btn btn-default" %>
+    </div>
+    <br>
+<ul class="list-group">
+  <li class="list-group-item paddin">
+     <span class="bg-label">Employer:</span><span class="center">
+     <span class="text-justify"><%= @position.employer %></span>
+  </li>
+  <li class="list-group-item"> 
+    <span class="bg-label">Registration ID:</span>
+    <span class="text-justify"><%= @position.reg_id %></span>
+  </li>
+  <li class="list-group-item">
+    <span class="bg-label">Opened On:</span>
+    <span class="text-justify"><%= @position.open_date.strftime("%e %b %Y") %></span>
+  </li>
+  <li class="list-group-item">
+    <span class="bg-label">Applied On:</span>
+    <span class="text-justify"><%= @position.applied_date.strftime("%e %b %Y") %></span>
+  </li>
+  <li class="list-group-item">
+    <span class="bg-label">Interviewed On:</span>
+    <span class="text-justify"><%= @position.interview_date ? @position.interview_date.strftime("%e %b %Y") : "Not yet interviewed" %></span>
+  </li>
+  <li class="list-group-item">
+    <span class="bg-label">Closes on:</span>
+    <span class="text-justify"><%= @position.close_date.strftime("%e %b %Y") %></span>
+  </li>
+  <li class="list-group-item">
+    <span class="bg-label">Your Thoughts:</span>
+    <span class="text-justify"><%= @position.notes %></span>
+  </li>
+</ul>
+
+<div class="row">
+<% @position.documents.each do |document| %>
+<div class="col-lg-6">
+   <iframe src="https://docs.google.com/viewer?url=<%= document.resume.url %>&embedded=true" %>" width="900" height="900" style="border: none; margin: 50px;"></iframe> </div>
+<% end %>
+</div>
+
+
+</div>
+</div>

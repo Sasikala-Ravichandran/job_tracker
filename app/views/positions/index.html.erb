@@ -1,1 +1,41 @@
-<h1>Index</h1>
+<h1 class="center">All APPLIED JOBS</h1>
+<div class="center"><%= link_to 'Home', current_user, class:"btn btn-default" %></div>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1">
+  
+  <section>
+    <div class="my_pagination"><%= will_paginate @positions %></div>
+    <div class="panel panel-default">
+      <table class="table table-striped">
+        <thead>
+          <tr class="center">
+            <th>S.No</th>
+            <th>Employer</th>
+            <th>Opened on</th>
+            <th>Applied on</th>
+            <th>interviewed on</th>
+            <th>Closing on</th>
+            <th>Documents count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @positions.each_with_index do |pos, i| %>
+          <tr>
+            <td class="text-justify"><%= (@page - 1) * 10 + i+1 %></td>
+            <td class="text-justify"><%= link_to pos.employer, [current_user, pos] %></td>
+            <td class="text-justify"><%= pos.open_date.strftime("%e %b %Y") %></td>
+            <td class="text-justify"><%= pos.applied_date.strftime("%e %b %Y") %></td>
+            <td class="text-justify"><%= pos.interview_date ? pos.interview_date.strftime("%e %b %Y") : "Not yet interviewed" %></td>
+            <td class="text-justify"><%= pos.close_date.strftime("%e %b %Y") %></td>
+            <td class="text-justify"><%= pos.documents.count %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="my_pagination"><%= will_paginate @positions %></div>  
+  </section>
+  </div>
+</div>

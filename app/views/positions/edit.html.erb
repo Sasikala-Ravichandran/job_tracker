@@ -1,1 +1,8 @@
-<h1> Edit </h1>
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <h1>EDIT POSITION</h1>
+    <%= render 'form' %>
+    <%= link_to 'Back', [current_user, @position], class: "btn btn-info pull-right" %>
+    <%= link_to 'Home', current_user, class: "btn btn-info pull-right" %>
+  </div>
+</div>

@@ -66,6 +66,7 @@ RSpec.describe PositionsController, type: :controller do
   describe "GET #edit" do
 
     it "responses with edit template" do
+      allow_any_instance_of(PositionsController).to receive(:validate_user_position)
       get :edit, id: position, user_id: user.id
       expect(response).to have_http_status(:success)
     end
@@ -76,6 +77,7 @@ RSpec.describe PositionsController, type: :controller do
     context "a successful update" do
 
       before do
+        allow_any_instance_of(PositionsController).to receive(:validate_user_position)
         put :update, position: FactoryGirl.attributes_for(:position, employer: "IBM"),
                       id: position.id, user_id: user.id, document: { id: [1,2,3] }
       end
@@ -96,8 +98,9 @@ RSpec.describe PositionsController, type: :controller do
     context "an unsuccessful update" do
 
       before do
+        allow_any_instance_of(PositionsController).to receive(:validate_user_position)
         put :update, position: FactoryGirl.attributes_for(:position, employer: " "),
-                        id: position.id, user_id: user.id, document: { id: [1,2,3] } 
+                        id: position.id, user_id: user.id, document: { id: [1,2,3] }
       end
 
       it "does not save position object in the database" do
@@ -113,6 +116,7 @@ RSpec.describe PositionsController, type: :controller do
   describe "DELETE #destroy" do
 
     before do
+      allow_any_instance_of(PositionsController).to receive(:validate_user_position)
       delete :destroy, id: position.id, user_id: user.id
     end
     

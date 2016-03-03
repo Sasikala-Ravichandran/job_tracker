@@ -10,3 +10,7 @@
 <div class="row center">
   <%= link_to "View in Dropbox", transform_url(@document.resume_url, @document.resume.store_path), class: "btn btn-default", target: "_blank"%>
 </div>
+<br>
+<div class="row center">
+  <iframe src="https://docs.google.com/viewer?url=<%= @document.resume.url %>&embedded=true" %>" width="900" height="900" style="border: none; margin: 50px;"></iframe> 
+</div>

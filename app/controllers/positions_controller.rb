@@ -1,9 +1,12 @@
 class PositionsController < ApplicationController
 
   before_action :set_position, only: [:show, :edit, :update, :destroy]
+  before_action :validate_user_position, only: [:show, :edit, :update, :destroy]
+  before_action :user_authorize, only: [:index, :new, :create]
 
   def index
-    @position = Position.all
+    @positions = current_user.positions.paginate(page: params[:page], per_page: 10) 
+    @page = (params[:page] || 1).to_i
   end
 
   def show
