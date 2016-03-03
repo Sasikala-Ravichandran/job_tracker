@@ -6,6 +6,7 @@
   <%= link_to "Back", user_documents_path(current_user), class: "btn btn-default" %>
   <%= link_to "Home", current_user, class: "btn btn-default" %>
 </div>
-
-
- 
+<br>
+<div class="row center">
+  <%= link_to "View in Dropbox", transform_url(@document.resume_url, @document.resume.store_path), class: "btn btn-default", target: "_blank"%>
+</div>

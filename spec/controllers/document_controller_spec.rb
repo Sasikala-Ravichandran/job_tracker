@@ -92,11 +92,11 @@ RSpec.describe DocumentsController, :type => :controller do
       end
     end
 
-    context "an unsuccessful create" do
+    context "an unsuccessful update" do
 
       before do
         allow_any_instance_of(DocumentsController).to receive(:validate_user_file)
-        post :create, document: FactoryGirl.attributes_for(:document, name: " "),
+        put :update, document: FactoryGirl.attributes_for(:document, name: " "),
                         id: document.id, user_id: user.id 
       end
 
