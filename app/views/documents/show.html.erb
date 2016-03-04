@@ -1,16 +1,18 @@
 <h1 class="center"><%= @document.name %></h1>
 <div class="row center">
-  <%= link_to "Download", @document.resume.url, class: "btn btn-default" %>
+  <%= link_to "Download", @document.resume.url, class: "btn btn-default" if @document.resume.url %>
   <%= link_to "Edit", edit_user_document_path(current_user, @document ), class: "btn btn-default"%>
   <%= link_to "Delete", user_document_path(current_user, @document), method: :delete, class: "btn btn-default" %>
   <%= link_to "Back", user_documents_path(current_user), class: "btn btn-default" %>
   <%= link_to "Home", current_user, class: "btn btn-default" %>
 </div>
 <br>
-<div class="row center">
-  <%= link_to "View in Dropbox", transform_url(@document.resume_url, @document.resume.store_path), class: "btn btn-default", target: "_blank"%>
-</div>
-<br>
-<div class="row center">
-  <iframe src="https://docs.google.com/viewer?url=<%= @document.resume.url %>&embedded=true" %>" width="900" height="900" style="border: none; margin: 50px;"></iframe> 
-</div>
+<% if @document.resume.url %>
+  <div class="row center">
+    <%= link_to "View in Dropbox", transform_url(@document.resume.url, @document.resume.store_path), class: "btn btn-default", target: "_blank"%>
+  </div>
+  <br>
+  <div class="row center">
+    <iframe src="https://docs.google.com/viewer?url=<%= @document.resume.url %>&embedded=true" %>" width="900" height="900" style="border: none; margin: 50px;"></iframe> 
+  </div>
+<% end %>
