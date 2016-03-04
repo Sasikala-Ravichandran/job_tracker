@@ -10,4 +10,5 @@ RSpec.describe Position, type: :model do
   it { should belong_to(:user) }
   it { should have_many(:applieds) }
   it { should have_many(:documents).through(:applieds) }
+  
 end

@@ -20,9 +20,11 @@ class PositionsController < ApplicationController
 
   def create
     @position = current_user.positions.build(position_params)
-    params[:document][:id].each do |document|
-      unless document.empty?
-        @applieds = @position.applieds.build(:document_id => document)
+    if params.has_key? "document"
+      params[:document][:id].each do |document|
+        unless document.empty?
+          @applieds = @position.applieds.build(:document_id => document)
+        end
       end
     end
     if @position.save
@@ -69,7 +71,7 @@ class PositionsController < ApplicationController
 
   def position_params
     params.require(:position).permit(:employer, :reg_id, :open_date, :close_date,
-        :applied_date, :interviewe_date, :notes)
+        :applied_date, :interview_date, :notes)
   end
 
   def set_position

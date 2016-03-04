@@ -7,4 +7,15 @@ class Position < ActiveRecord::Base
 
   has_many :applieds
   has_many :documents, through: :applieds
+
+  def self.remainding_mail
+    User.all.each do |user|
+      user.positions.each do |position|
+        if(position.close_date-Date.today).to_i <= 3
+          RemainderMailer.remainder(position).deliver_now!
+        end
+      end
+    end
+  end
+
 end

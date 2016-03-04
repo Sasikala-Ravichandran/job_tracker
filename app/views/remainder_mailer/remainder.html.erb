@@ -6,12 +6,13 @@
   <body>
     <h2>Hi <%= @user.first_name %>,</h2>
     <p>
-      This is a remainder mail as you have applied for <%= @position.employer %> which is going to get closed on <%= @position.close_date.strftime("%e %b %Y") %>. You have applied for this job on <%= @position.applied_date.strftime("%e %b %Y") %>
+      This is a remainder mail as you have applied for <%= link_to @position.employer, user_position_url(@user, @position) %> which is going to get closed on <%= @position.close_date.strftime("%e %b %Y") %>. You have applied for this job on <%= @position.applied_date.strftime("%e %b %Y") %>
       <% unless @position.interview_date.blank? %>
         and gave an interview on <%= @position.interview_date.strftime("%e %b %Y") %>
       <% end %>
     </p>
     <br>
-    <%= link_to "See here", user_position_url(@user, @position) %>
+    <p>Cheers,</p>
+    <p>- Job Applicaiton Tracker App Team.</p>
   </body>
 </html>

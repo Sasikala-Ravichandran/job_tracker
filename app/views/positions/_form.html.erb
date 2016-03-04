@@ -40,12 +40,14 @@
     <%= f.text_area :notes, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= fields_for(@position.applieds.build) do |app| %>
-      <%= app.label "All files", class: "control-label" %><br>
-      <%= collection_select(:document, :id, current_user.documents, :id, :resume_identifier, {}, {:multiple => true }) %>
-    <% end %>
-  </div>
+  <% if current_user.documents.exists? %>
+    <div class="form-group">
+      <%= fields_for(@position.applieds.build) do |app| %>
+        <%= app.label "All files", class: "control-label" %><br>
+        <%= collection_select(:document, :id, current_user.documents, :id, :resume_identifier, {}, {:multiple => true }) %>
+      <% end %>
+    </div>
+  <% end %>
   <br>
   <br>
   <%= f.button :submit, class: "btn btn-primary pull-left" %>
