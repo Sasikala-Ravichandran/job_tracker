@@ -1,0 +1,11 @@
+Hi <%= @user.first_name %>,
+
+This is a remainder mail as <%= @position.employer %> is going to get closed on
+<%= @position.close_date.strftime("%e %b %Y") %>. You have applied for this job on
+<%= @position.applied_date.strftime("%e %b %Y") %>
+
+<% unless @position.interview_date.blank? %>
+  and gave a interview on <%= @position.interview_date.strftime("%e %b %Y") %>
+<% end %>
+
+<%= link_to "See here", user_position_url(@user, @position)%>
