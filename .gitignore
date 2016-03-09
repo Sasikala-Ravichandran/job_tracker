@@ -17,6 +17,7 @@
 /tmp
 /spec_out_stripe
 /spec_out_steps
+/project_description
 
 # Ignore application configuration
 /config/application.yml
