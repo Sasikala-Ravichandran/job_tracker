@@ -6,6 +6,6 @@ class Document < ActiveRecord::Base
 
   mount_uploader :resume, ResumeUploader
 
-  has_many :applieds
+  has_many :applieds, dependent: :destroy
   has_many :positions, through: :applieds
 end
